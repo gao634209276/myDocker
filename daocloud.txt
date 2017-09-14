@@ -1,71 +1,41 @@
 Ubuntu下配置Docker Registry Mirror的命令如下：
-
-sudo echo “DOCKER_OPTS=\”\$DOCKER_OPTS –registry-mirror=http://your-id.m.daocloud.io -d\”” >> /etc/default/docker
-sudo service docker restart
+	sudo echo “DOCKER_OPTS=\”\$DOCKER_OPTS –registry-mirror=http://your-id.m.daocloud.io -d\”” >> /etc/default/docker
+	sudo service docker restart
 如果你是用的Boot2Docker，配置命令为：
+	# 进入Boot2Docker Start Shell，并执行
+	sudo su
+	echo “EXTRA_ARGS=\”–registry-mirror=http://your-id.m.daocloud.io\”” >> /var/lib/boot2docker/profile
+	exit
+	# 重启Boot2Docker
+	配置好Registry Mirror后，就可以拉取Docker镜像了，经我测试，
+	使用DaoCloud的Mirror后，拉取常见镜像的速度可以达到1.5M左右，具体速度在你的网络环境可能会略有不同。
+我们来看看配置了Registry Mirror后，Docker拉取镜像的过程吧。
+	首先是CLI拉取镜像命令代码片段(docker/api/client/command.go中的CmdPull函数)
 
-# 进入Boot2Docker Start Shell，并执行
-sudo su
-echo “EXTRA_ARGS=\”–registry-mirror=http://your-id.m.daocloud.io\”” >> /var/lib/boot2docker/profile
-exit
-# 重启Boot2Docker
-配置好Registry Mirror后，就可以拉取Docker镜像了，经我测试，使用DaoCloud的Mirror后，拉取常见镜像的速度可以达到1.5M左右，具体速度在你的网络环境可能会略有不同。
+	首先，Docker CLI会试图获得授权，在我们的例子中会向https://index.docker.io/v1请求认证，认证完成后，认证服务器会返回一个对应的Token。
+	注意，这里用户认证与配置的Registry Mirror完全无关，这样我们就不用担心使用Mirror的安全问题了。
+	接着Docker CLI会调用Docker Server（即Docker daemon程序）的创建镜像命令，
+	Docker Server随之会执行具体的拉取镜像动作，代码片段如下(docker/graph/pull.go的pullRepository函数)
 
-我们来看看配置了Registry Mirror后，Docker拉取镜像的过程吧。首先是CLI拉取镜像命令代码片段(docker/api/client/command.go中的CmdPull函数)
+	从代码中可以发现，如果配置了Registry Mirror，Docker Server会首先从Mirror中拉取镜像，
+	如果Mirror拉取失败会退而求其次从镜像中指定的Registry拉取。
+	大家又可以松口气了，就算配置的Registry Mirror失效，也不会影响用户拉取镜像，只不过速度就。。。
 
-
-首先，Docker CLI会试图获得授权，在我们的例子中会向https://index.docker.io/v1请求认证，认证完成后，认证服务器会返回一个对应的Token。注意，这里用户认证与配置的Registry Mirror完全无关，这样我们就不用担心使用Mirror的安全问题了。接着Docker CLI会调用Docker Server（即Docker daemon程序）的创建镜像命令，Docker Server随之会执行具体的拉取镜像动作，代码片段如下(docker/graph/pull.go的pullRepository函数)
-
-从代码中可以发现，如果配置了Registry Mirror，Docker Server会首先从Mirror中拉取镜像，如果Mirror拉取失败会退而求其次从镜像中指定的Registry拉取。大家又可以松口气了，就算配置的Registry Mirror失效，也不会影响用户拉取镜像，只不过速度就。。。
-
-镜像拉下来后，就可以运行容器了
+	镜像拉下来后，就可以运行容器了
 
 
 附录
 下面我简单介绍下如何在DaoCloud申请一个Mirror服务，首先登陆DaoCloud主页
 
-点击”立刻注册“，简单填写个人信息后，随即登陆并自动跳转到”控制台“，按照提示点击”启动你的加速器“按钮。
+	点击”立刻注册“，简单填写个人信息后，随即登陆并自动跳转到”控制台“，按照提示点击”启动你的加速器“按钮。
+	启动成功后，你就拥有了一个你专用的Registry Mirror地址了，加速器链接就是你要设置”--registry-mirror“的地址。
+	目前每个用户有10G的加速流量（Tips：如果流量不够用可以邀请好友获得奖励流量，邀请越多奖励越多哦）
 
-
-启动成功后，你就拥有了一个你专用的Registry Mirror地址了，加速器链接就是你要设置”--registry-mirror“的地址。目前每个用户有10G的加速流量（Tips：如果流量不够用可以邀请好友获得奖励流量，邀请越多奖励越多哦）
-
-
-最后，要感谢国内存储行业领先企业七牛云存储在存储和CDN方面提供的大力支持，正因为有了像七牛这样技术领先又热心促进互联网生态发展的企业的积极参与，我们才能给开发者提供更多高质量的服务。
+	最后，要感谢国内存储行业领先企业七牛云存储在存储和CDN方面提供的大力支持，
+	正因为有了像七牛这样技术领先又热心促进互联网生态发展的企业的积极参与，我们才能给开发者提供更多高质量的服务。
 
 结语
-今天和大家一起聊了聊Docker在拉取镜像时如何解析镜像和执行拉取动作的，以及如何通过设置Registry Mirror克服网络延时，加速拉取过程。涉及到的代码只集中在Docker CLI和Docker Server，在很多方面并没有展开，比如Registry是如何响应以及如何和Index Server联动的，只能留给下次再和大家详细探讨了。
-
-作者简介
-孙宏亮，DaoCloud初创团队成员，软件工程师，浙江大学计算机科学专业应届毕业研究生。读研期间活跃在PaaS和Docker开源社区，对Cloud Foundry有深入研究和丰富实践，擅长底层平台代码分析，对分布式平台的架构有一定经验，撰写了大量有深度的技术博客。2014年末以合伙人身份加入DaoCloud团队，致力于传播以Docker为主的容器的技术，推动互联网应用的容器化步伐。
-
-欢迎交流，邮箱：allen.sun@daocloud.io
-
-6
-This entry was posted in 干货 and tagged docker干货. Bookmark the permalink.
-Post navigation
-7 thoughts on “玩转Docker镜像”
-Pingback: DaoCloud宣布Docker Hub Mirror服务永久免费 | DaoCloud
-Pingback: 内测用户必读之八：体验加速器 | DaoCloud
-bluishoul says:
-April 29, 2015 at 4:05 pm
-Cool!
-
-Reply
-Pingback: Linux:玩转Docker镜像 – osetc.com
-Sun Gengze says:
-July 27, 2015 at 3:09 pm
-写的很好，受教了！！
-
-Reply
-Coande says:
-September 3, 2016 at 11:56 pm
-不错，学习啦。
-
-Reply
-junqiang_yang says:
-January 4, 2017 at 1:08 pm
-厉害, 受教了 .
-
-Reply
-Leave a Reply
+	今天和大家一起聊了聊Docker在拉取镜像时如何解析镜像和执行拉取动作的，以及如何通过设置Registry Mirror克服网络延时，加速拉取过程。
+	涉及到的代码只集中在Docker CLI和Docker Server，在很多方面并没有展开，
+	比如Registry是如何响应以及如何和Index Server联动的，只能留给下次再和大家详细探讨了。
 

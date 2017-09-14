@@ -1,0 +1,22 @@
+Docker容器内不能联网的6种解决方案
+http://blog.csdn.net/yangzhenping/article/details/43567155
+Docker的4种网络模式
+http://www.cnblogs.com/gispathfinder/p/5871043.html
+docker的host、bridge网络类型
+http://blog.csdn.net/liukuan73/article/details/51603074
+一图看懂host_only nat bridge拓扑结构(VMware三种模式)
+http://www.cnblogs.com/zejin2008/p/5935934.html
+
+docker跨主机链接
+http://blog.csdn.net/canot/article/details/52895897
+http://tonybai.com/2016/02/15/understanding-docker-multi-host-networking/
+保持一个干净的docker环境
+运行交互式容器--rm标志，以避免之后将其删除。
+删除所有停止容器：
+	docker rm $(docker ps -a | grep Exited | awk '{print $1}')
+
+清理未标记的图像docker：
+	docker rmi $(docker images -q --filter "dangling=true")
+
+停止并删除所有容器（包括运行容器！）
+	docker rm -f $(docker ps -a -q)

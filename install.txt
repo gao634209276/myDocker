@@ -35,7 +35,15 @@ sudo docker run hello-world
 ##################################
 sudo groupadd docker
 sudo usermod -aG docker $USER
-
+	免 sudo 使用 docker
+	from:http://www.tinylab.org/use-docker-without-sudo/
+	如果还没有 docker group 就添加一个：
+	sudo groupadd docker
+	将用户加入该 group 内。然后退出并重新登录就生效啦。
+	sudo gpasswd -a ${USER} docker
+	重启 docker 服务
+	sudo service docker restart
+	切换当前会话到新 group 或者重启 X 会话
 
 # UPGRADE DOCKER
 ##################################
@@ -50,6 +58,8 @@ sudo apt-get purge docker-ce
 sudo rm -rf /var/lib/docker
 
 
+Troubleshooting
+curl https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh > check-config.sh
 
 
 

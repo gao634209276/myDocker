@@ -1,4 +1,15 @@
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://5ddc2e33.m.daocloud.io
-
-http://www.daocloud.io/mirror#accelerator-doc
+镜像加速器:
+doc:
 http://guide.daocloud.io/dcs/daocloud-9153151.html
+my daotools url:
+http://www.daocloud.io/mirror#accelerator-doc
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://5ddc2e33.m.daocloud.io
+配置镜像路径在:
+sudo cat  /etc/docker/daemon.json
+{
+    "registry-mirrors": [
+        "http://5ddc2e33.m.daocloud.io"
+    ],
+    "insecure-registries": []
+}
+ps -ef | grep docked
