@@ -1,0 +1,39 @@
+http://blog.csdn.net/zjin_hua/article/details/52041757
+http://blog.opskumu.com/docker.html
+https://github.com/docker/docker-registry/blob/master/README.md
+
+搜索镜像
+# docker search 镜像名
+
+拉取镜像
+# docker pull 镜像名
+
+查看所用镜像
+# docker images
+
+删除镜像
+# docker rmi image-id
+# docker rmi ${docker images -q}  //删除所有镜像
+
+运行镜像
+# docker run --name [container-name] -d [image-name] -p [port:port]
+
+查看运行中的镜像副本
+# docker ps
+# docker ps -a //查看所有的镜像副本，包括启动失败，停止、运行中的
+
+停止镜像副本
+# docker stop container-name/contaoiner-id
+
+启动镜像副本
+# docker start container-name/container-id
+
+删除镜像副本：
+# docker rm container-id
+# docker rm ${docker ps -a -q} //删除所有镜像副本
+
+查看容器日志：
+# docker logs container-name/container-id
+
+登录容器：
+# docker exec -it container-id/container-name bash

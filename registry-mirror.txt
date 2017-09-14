@@ -1,0 +1,9 @@
+
+## cloud.docker.com
+
+
+
+## daocloud mirror
+## http://blog.daocloud.io/how-to-master-docker-image/
+sudo echo "DOCKER_OPTS=\"\$DOCKER_OPTS –registry-mirror=http://your-id.m.daocloud.io -d\"" >> /etc/default/docker
+sudo service docker restart

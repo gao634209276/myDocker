@@ -1,0 +1,125 @@
+Docker-compose使用全解
+http://blog.csdn.net/zhiaini06/article/details/45287663
+
+在安装compose之前，要确保已经安装了docker1.3或以上版本
+安装
+	from:https://docs.docker.com/compose/install/#install-compose
+	sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+	sudo chmod +x /usr/local/bin/docker-compose
+	或者Install using pip:
+	sudo pip install docker-compose
+	docker-compose --version
+
+	卸载curl方式安装:
+	sudo rm /usr/local/bin/docker-compose
+	或者pip方式安装:
+	pip uninstall docker-compose
+Compose命令补全
+-----------------------------------------------------
+安装命令补全
+	确保bash completion已经安装，
+		如果当前使用非最小安装的Linux，bash completion已经OK了，
+		如果是在MAC上，可以使用brew install bash-completion来安装
+	将completion脚本放在/etc/bash_completion.d/（在MAC上是/usr/local/etc/bash_completion.d/）
+
+	在下次登录时，Completion功能已经可以使用
+	可用的补全取决于在命令行的输入，会补全：
+	* 可用的docker-compose命令
+	* 对于某一特别命令可用的选项
+	* 在一个给定的上下文条件（比如：具有运行或停止状态的实例的服务或者基于镜像的服务 VS 基于Dockerfile的服务）下，
+		给出有可行的服务名称，对于docker-compose scale，补全服务名称时会自动有”=”附加上去
+	* 对于可选项的参数，比如：docker-compose kill -s会完成一些信号，比如SIGUP和SIGUSR1
+	拥有了这项功能以后，Compose更快更少输入了呢！Happy working！
+
+-----------------------------------------------------
+Compose使用实例
+在本例中将会实现启动nginx服务及一个数据卷容器，并将该数据卷容器作为nginx的静态文件
+1.创建compose文件夹
+	sudo mkdir composetest
+	cd composetest
+
+2.创建docker-compose.yml文件
+	touch docker-compose.yml
+	vim docker-compose.yml
+	在docker-compose.yml中输入以下内容：
+	dvc:
+		image: debian:wheezy
+		volumes:
+			- /www:/usr/share/nginx/html:ro
+	nginx:
+		image: nginx:latest
+		volumes_from:
+			- dvc
+		ports:
+			- "8081:80"
+3.启动
+	docker-compose up -d
+	注：使用命令docker-compose ps查看运行状况
+
+-----------------------------------------------------
+CLI 说明（docker-compose 命令）
+大多数Compose命令都是运行于一个或多个服务的，
+如果服务没有指定，该命令将会应用到所有服务，
+如果要获得所有可用信息，使用命令：docker-compose [COMMAND] --help，下面是命令（COMMAND）的说明：
+
+
+build
+	创建或者再建服务
+	服务被创建后会标记为project_service(比如composetest_db)，
+	如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它
+
+help
+	显示命令的帮助和使用信息
+
+kill
+	通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过，比如：
+	docker-compose kill -s SIGKINT
+
+logs
+	显示服务的日志输出
+
+port
+	为端口绑定输出公共信息
+
+ps
+	显示容器
+
+pull
+	拉取服务镜像
+
+rm
+	删除停止的容器
+
+run
+	在服务上运行一个一次性命令，比如：
+	docker-compose run web python manage.py shell
+
+scale
+	设置为一个服务启动的容器数量，数量是以这样的参数形式指定的：service=num，比如：
+	docker-compose scale web=2 worker=3
+
+start
+	启动已经存在的容器作为一个服务
+
+stop
+	停止运行的容器而不删除它们，它们可以使用命令docker-compose start重新启动起来
+
+up
+	为一个服务构建、创建、启动、附加到容器
+	连接的服务会被启动，除非它们已经在运行了
+	默认情况下，docker-compose up会集中每个容器的输出，当存在时，所有的容器会停止，
+		运行docker-compose up -d会在后台启动容器并使它们运行
+	默认情况下，如果服务存在容器的话，docker-compose up会停止并再创建它们（使用了volumes-from会保留已挂载的卷），
+	如果不想使容器停止并再创建的话，使用docker-compose up --no-recreate，如果有需要的话，这会启动任何停止的容器
+	选项
+		–verbose
+		显示更多输出
+
+		–version
+		显示版本号并退出
+
+		-f,–file FILE
+		指定一个可选的Compose yaml文件（默认：docker-compose.yml）
+
+		-p,–project-name NAME
+		指定可选的项目名称（默认：当前目录名称）
