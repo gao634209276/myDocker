@@ -1,0 +1,19 @@
+Docker容器内存限制
+Your kernel does not support swap limit capabilities.memory limit without swap
+解决:
+http://blog.csdn.net/l6807718/article/details/51692827
+	修改grub文件/etc/default/grub 添加：
+	GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
+	之后更新grub并重启可以解决
+	sudo update-grub
+	sudo reboot
+	2.使用docker -m操作会使内存被限制为输入大小的两倍
+	sudo docker run -it --name test -m 100m ubuntu /bin/bash
+	此时内存被限制为200m
+	若想要限制为100m必须执行
+	sudo docker run -it --name test -m 100m --memory-swap=100m ubuntu /bin/bash
+	此时内存与swap都被限制为100m
+	内存压测工具stres
+	sudo apt-get install stress
+	sudo stress --vm 1 --vm-bytes 100M --vm-hang 0
+	若运行后现实在几秒内被杀死说明内存被限制为100M
