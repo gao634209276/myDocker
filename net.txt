@@ -1,22 +1,22 @@
-DockerÈİÆ÷ÄÚ²»ÄÜÁªÍøµÄ6ÖÖ½â¾ö·½°¸
+Dockerå®¹å™¨å†…ä¸èƒ½è”ç½‘çš„6ç§è§£å†³æ–¹æ¡ˆ
 http://blog.csdn.net/yangzhenping/article/details/43567155
-DockerµÄ4ÖÖÍøÂçÄ£Ê½
+Dockerçš„4ç§ç½‘ç»œæ¨¡å¼
 http://www.cnblogs.com/gispathfinder/p/5871043.html
-dockerµÄhost¡¢bridgeÍøÂçÀàĞÍ
+dockerçš„hostã€bridgeç½‘ç»œç±»å‹
 http://blog.csdn.net/liukuan73/article/details/51603074
-Ò»Í¼¿´¶®host_only nat bridgeÍØÆË½á¹¹(VMwareÈıÖÖÄ£Ê½)
+ä¸€å›¾çœ‹æ‡‚host_only nat bridgeæ‹“æ‰‘ç»“æ„(VMwareä¸‰ç§æ¨¡å¼)
 http://www.cnblogs.com/zejin2008/p/5935934.html
 
-docker¿çÖ÷»úÁ´½Ó
+dockerè·¨ä¸»æœºé“¾æ¥
 http://blog.csdn.net/canot/article/details/52895897
 http://tonybai.com/2016/02/15/understanding-docker-multi-host-networking/
-±£³ÖÒ»¸ö¸É¾»µÄdocker»·¾³
-ÔËĞĞ½»»¥Ê½ÈİÆ÷--rm±êÖ¾£¬ÒÔ±ÜÃâÖ®ºó½«ÆäÉ¾³ı¡£
-É¾³ıËùÓĞÍ£Ö¹ÈİÆ÷£º
+ä¿æŒä¸€ä¸ªå¹²å‡€çš„dockerç¯å¢ƒ
+è¿è¡Œäº¤äº’å¼å®¹å™¨--rmæ ‡å¿—ï¼Œä»¥é¿å…ä¹‹åå°†å…¶åˆ é™¤ã€‚
+åˆ é™¤æ‰€æœ‰åœæ­¢å®¹å™¨ï¼š
 	docker rm $(docker ps -a | grep Exited | awk '{print $1}')
 
-ÇåÀíÎ´±ê¼ÇµÄÍ¼Ïñdocker£º
+æ¸…ç†æœªæ ‡è®°çš„å›¾åƒdockerï¼š
 	docker rmi $(docker images -q --filter "dangling=true")
 
-Í£Ö¹²¢É¾³ıËùÓĞÈİÆ÷£¨°üÀ¨ÔËĞĞÈİÆ÷£¡£©
+åœæ­¢å¹¶åˆ é™¤æ‰€æœ‰å®¹å™¨ï¼ˆåŒ…æ‹¬è¿è¡Œå®¹å™¨ï¼ï¼‰
 	docker rm -f $(docker ps -a -q)

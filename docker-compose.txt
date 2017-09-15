@@ -1,47 +1,47 @@
-Docker-composeÊ¹ÓÃÈ«½â
+Docker-composeä½¿ç”¨å…¨è§£
 http://blog.csdn.net/zhiaini06/article/details/45287663
 
-ÔÚ°²×°composeÖ®Ç°£¬ÒªÈ·±£ÒÑ¾­°²×°ÁËdocker1.3»òÒÔÉÏ°æ±¾
-°²×°
+åœ¨å®‰è£…composeä¹‹å‰ï¼Œè¦ç¡®ä¿å·²ç»å®‰è£…äº†docker1.3æˆ–ä»¥ä¸Šç‰ˆæœ¬
+å®‰è£…
 	from:https://docs.docker.com/compose/install/#install-compose
 	sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 	sudo chmod +x /usr/local/bin/docker-compose
-	»òÕßInstall using pip:
+	æˆ–è€…Install using pip:
 	sudo pip install docker-compose
 	docker-compose --version
 
-	Ð¶ÔØcurl·½Ê½°²×°:
+	å¸è½½curlæ–¹å¼å®‰è£…:
 	sudo rm /usr/local/bin/docker-compose
-	»òÕßpip·½Ê½°²×°:
+	æˆ–è€…pipæ–¹å¼å®‰è£…:
 	pip uninstall docker-compose
-ComposeÃüÁî²¹È«
+Composeå‘½ä»¤è¡¥å…¨
 -----------------------------------------------------
-°²×°ÃüÁî²¹È«
-	È·±£bash completionÒÑ¾­°²×°£¬
-		Èç¹ûµ±Ç°Ê¹ÓÃ·Ç×îÐ¡°²×°µÄLinux£¬bash completionÒÑ¾­OKÁË£¬
-		Èç¹ûÊÇÔÚMACÉÏ£¬¿ÉÒÔÊ¹ÓÃbrew install bash-completionÀ´°²×°
-	½«completion½Å±¾·ÅÔÚ/etc/bash_completion.d/£¨ÔÚMACÉÏÊÇ/usr/local/etc/bash_completion.d/£©
+å®‰è£…å‘½ä»¤è¡¥å…¨
+	ç¡®ä¿bash completionå·²ç»å®‰è£…ï¼Œ
+		å¦‚æžœå½“å‰ä½¿ç”¨éžæœ€å°å®‰è£…çš„Linuxï¼Œbash completionå·²ç»OKäº†ï¼Œ
+		å¦‚æžœæ˜¯åœ¨MACä¸Šï¼Œå¯ä»¥ä½¿ç”¨brew install bash-completionæ¥å®‰è£…
+	å°†completionè„šæœ¬æ”¾åœ¨/etc/bash_completion.d/ï¼ˆåœ¨MACä¸Šæ˜¯/usr/local/etc/bash_completion.d/ï¼‰
 
-	ÔÚÏÂ´ÎµÇÂ¼Ê±£¬Completion¹¦ÄÜÒÑ¾­¿ÉÒÔÊ¹ÓÃ
-	¿ÉÓÃµÄ²¹È«È¡¾öÓÚÔÚÃüÁîÐÐµÄÊäÈë£¬»á²¹È«£º
-	* ¿ÉÓÃµÄdocker-composeÃüÁî
-	* ¶ÔÓÚÄ³Ò»ÌØ±ðÃüÁî¿ÉÓÃµÄÑ¡Ïî
-	* ÔÚÒ»¸ö¸ø¶¨µÄÉÏÏÂÎÄÌõ¼þ£¨±ÈÈç£º¾ßÓÐÔËÐÐ»òÍ£Ö¹×´Ì¬µÄÊµÀýµÄ·þÎñ»òÕß»ùÓÚ¾µÏñµÄ·þÎñ VS »ùÓÚDockerfileµÄ·þÎñ£©ÏÂ£¬
-		¸ø³öÓÐ¿ÉÐÐµÄ·þÎñÃû³Æ£¬¶ÔÓÚdocker-compose scale£¬²¹È«·þÎñÃû³ÆÊ±»á×Ô¶¯ÓÐ¡±=¡±¸½¼ÓÉÏÈ¥
-	* ¶ÔÓÚ¿ÉÑ¡ÏîµÄ²ÎÊý£¬±ÈÈç£ºdocker-compose kill -s»áÍê³ÉÒ»Ð©ÐÅºÅ£¬±ÈÈçSIGUPºÍSIGUSR1
-	ÓµÓÐÁËÕâÏî¹¦ÄÜÒÔºó£¬Compose¸ü¿ì¸üÉÙÊäÈëÁËÄØ£¡Happy working£¡
+	åœ¨ä¸‹æ¬¡ç™»å½•æ—¶ï¼ŒCompletionåŠŸèƒ½å·²ç»å¯ä»¥ä½¿ç”¨
+	å¯ç”¨çš„è¡¥å…¨å–å†³äºŽåœ¨å‘½ä»¤è¡Œçš„è¾“å…¥ï¼Œä¼šè¡¥å…¨ï¼š
+	* å¯ç”¨çš„docker-composeå‘½ä»¤
+	* å¯¹äºŽæŸä¸€ç‰¹åˆ«å‘½ä»¤å¯ç”¨çš„é€‰é¡¹
+	* åœ¨ä¸€ä¸ªç»™å®šçš„ä¸Šä¸‹æ–‡æ¡ä»¶ï¼ˆæ¯”å¦‚ï¼šå…·æœ‰è¿è¡Œæˆ–åœæ­¢çŠ¶æ€çš„å®žä¾‹çš„æœåŠ¡æˆ–è€…åŸºäºŽé•œåƒçš„æœåŠ¡ VS åŸºäºŽDockerfileçš„æœåŠ¡ï¼‰ä¸‹ï¼Œ
+		ç»™å‡ºæœ‰å¯è¡Œçš„æœåŠ¡åç§°ï¼Œå¯¹äºŽdocker-compose scaleï¼Œè¡¥å…¨æœåŠ¡åç§°æ—¶ä¼šè‡ªåŠ¨æœ‰â€=â€é™„åŠ ä¸ŠåŽ»
+	* å¯¹äºŽå¯é€‰é¡¹çš„å‚æ•°ï¼Œæ¯”å¦‚ï¼šdocker-compose kill -sä¼šå®Œæˆä¸€äº›ä¿¡å·ï¼Œæ¯”å¦‚SIGUPå’ŒSIGUSR1
+	æ‹¥æœ‰äº†è¿™é¡¹åŠŸèƒ½ä»¥åŽï¼ŒComposeæ›´å¿«æ›´å°‘è¾“å…¥äº†å‘¢ï¼Happy workingï¼
 
 -----------------------------------------------------
-ComposeÊ¹ÓÃÊµÀý
-ÔÚ±¾ÀýÖÐ½«»áÊµÏÖÆô¶¯nginx·þÎñ¼°Ò»¸öÊý¾Ý¾íÈÝÆ÷£¬²¢½«¸ÃÊý¾Ý¾íÈÝÆ÷×÷ÎªnginxµÄ¾²Ì¬ÎÄ¼þ
-1.´´½¨composeÎÄ¼þ¼Ð
+Composeä½¿ç”¨å®žä¾‹
+åœ¨æœ¬ä¾‹ä¸­å°†ä¼šå®žçŽ°å¯åŠ¨nginxæœåŠ¡åŠä¸€ä¸ªæ•°æ®å·å®¹å™¨ï¼Œå¹¶å°†è¯¥æ•°æ®å·å®¹å™¨ä½œä¸ºnginxçš„é™æ€æ–‡ä»¶
+1.åˆ›å»ºcomposeæ–‡ä»¶å¤¹
 	sudo mkdir composetest
 	cd composetest
 
-2.´´½¨docker-compose.ymlÎÄ¼þ
+2.åˆ›å»ºdocker-compose.ymlæ–‡ä»¶
 	touch docker-compose.yml
 	vim docker-compose.yml
-	ÔÚdocker-compose.ymlÖÐÊäÈëÒÔÏÂÄÚÈÝ£º
+	åœ¨docker-compose.ymlä¸­è¾“å…¥ä»¥ä¸‹å†…å®¹ï¼š
 	dvc:
 		image: debian:wheezy
 		volumes:
@@ -52,74 +52,74 @@ ComposeÊ¹ÓÃÊµÀý
 			- dvc
 		ports:
 			- "8081:80"
-3.Æô¶¯
+3.å¯åŠ¨
 	docker-compose up -d
-	×¢£ºÊ¹ÓÃÃüÁîdocker-compose ps²é¿´ÔËÐÐ×´¿ö
+	æ³¨ï¼šä½¿ç”¨å‘½ä»¤docker-compose psæŸ¥çœ‹è¿è¡ŒçŠ¶å†µ
 
 -----------------------------------------------------
-CLI ËµÃ÷£¨docker-compose ÃüÁî£©
-´ó¶àÊýComposeÃüÁî¶¼ÊÇÔËÐÐÓÚÒ»¸ö»ò¶à¸ö·þÎñµÄ£¬
-Èç¹û·þÎñÃ»ÓÐÖ¸¶¨£¬¸ÃÃüÁî½«»áÓ¦ÓÃµ½ËùÓÐ·þÎñ£¬
-Èç¹ûÒª»ñµÃËùÓÐ¿ÉÓÃÐÅÏ¢£¬Ê¹ÓÃÃüÁî£ºdocker-compose [COMMAND] --help£¬ÏÂÃæÊÇÃüÁî£¨COMMAND£©µÄËµÃ÷£º
+CLI è¯´æ˜Žï¼ˆdocker-compose å‘½ä»¤ï¼‰
+å¤§å¤šæ•°Composeå‘½ä»¤éƒ½æ˜¯è¿è¡ŒäºŽä¸€ä¸ªæˆ–å¤šä¸ªæœåŠ¡çš„ï¼Œ
+å¦‚æžœæœåŠ¡æ²¡æœ‰æŒ‡å®šï¼Œè¯¥å‘½ä»¤å°†ä¼šåº”ç”¨åˆ°æ‰€æœ‰æœåŠ¡ï¼Œ
+å¦‚æžœè¦èŽ·å¾—æ‰€æœ‰å¯ç”¨ä¿¡æ¯ï¼Œä½¿ç”¨å‘½ä»¤ï¼šdocker-compose [COMMAND] --helpï¼Œä¸‹é¢æ˜¯å‘½ä»¤ï¼ˆCOMMANDï¼‰çš„è¯´æ˜Žï¼š
 
 
 build
-	´´½¨»òÕßÔÙ½¨·þÎñ
-	·þÎñ±»´´½¨ºó»á±ê¼ÇÎªproject_service(±ÈÈçcomposetest_db)£¬
-	Èç¹û¸Ä±äÁËÒ»¸ö·þÎñµÄDockerfile»òÕß¹¹½¨Ä¿Â¼µÄÄÚÈÝ£¬¿ÉÒÔÊ¹ÓÃdocker-compose buildÀ´ÖØ½¨Ëü
+	åˆ›å»ºæˆ–è€…å†å»ºæœåŠ¡
+	æœåŠ¡è¢«åˆ›å»ºåŽä¼šæ ‡è®°ä¸ºproject_service(æ¯”å¦‚composetest_db)ï¼Œ
+	å¦‚æžœæ”¹å˜äº†ä¸€ä¸ªæœåŠ¡çš„Dockerfileæˆ–è€…æž„å»ºç›®å½•çš„å†…å®¹ï¼Œå¯ä»¥ä½¿ç”¨docker-compose buildæ¥é‡å»ºå®ƒ
 
 help
-	ÏÔÊ¾ÃüÁîµÄ°ïÖúºÍÊ¹ÓÃÐÅÏ¢
+	æ˜¾ç¤ºå‘½ä»¤çš„å¸®åŠ©å’Œä½¿ç”¨ä¿¡æ¯
 
 kill
-	Í¨¹ý·¢ËÍSIGKILLµÄÐÅºÅÇ¿ÖÆÍ£Ö¹ÔËÐÐµÄÈÝÆ÷£¬Õâ¸öÐÅºÅ¿ÉÒÔÑ¡ÔñÐÔµÄÍ¨¹ý£¬±ÈÈç£º
+	é€šè¿‡å‘é€SIGKILLçš„ä¿¡å·å¼ºåˆ¶åœæ­¢è¿è¡Œçš„å®¹å™¨ï¼Œè¿™ä¸ªä¿¡å·å¯ä»¥é€‰æ‹©æ€§çš„é€šè¿‡ï¼Œæ¯”å¦‚ï¼š
 	docker-compose kill -s SIGKINT
 
 logs
-	ÏÔÊ¾·þÎñµÄÈÕÖ¾Êä³ö
+	æ˜¾ç¤ºæœåŠ¡çš„æ—¥å¿—è¾“å‡º
 
 port
-	Îª¶Ë¿Ú°ó¶¨Êä³ö¹«¹²ÐÅÏ¢
+	ä¸ºç«¯å£ç»‘å®šè¾“å‡ºå…¬å…±ä¿¡æ¯
 
 ps
-	ÏÔÊ¾ÈÝÆ÷
+	æ˜¾ç¤ºå®¹å™¨
 
 pull
-	À­È¡·þÎñ¾µÏñ
+	æ‹‰å–æœåŠ¡é•œåƒ
 
 rm
-	É¾³ýÍ£Ö¹µÄÈÝÆ÷
+	åˆ é™¤åœæ­¢çš„å®¹å™¨
 
 run
-	ÔÚ·þÎñÉÏÔËÐÐÒ»¸öÒ»´ÎÐÔÃüÁî£¬±ÈÈç£º
+	åœ¨æœåŠ¡ä¸Šè¿è¡Œä¸€ä¸ªä¸€æ¬¡æ€§å‘½ä»¤ï¼Œæ¯”å¦‚ï¼š
 	docker-compose run web python manage.py shell
 
 scale
-	ÉèÖÃÎªÒ»¸ö·þÎñÆô¶¯µÄÈÝÆ÷ÊýÁ¿£¬ÊýÁ¿ÊÇÒÔÕâÑùµÄ²ÎÊýÐÎÊ½Ö¸¶¨µÄ£ºservice=num£¬±ÈÈç£º
+	è®¾ç½®ä¸ºä¸€ä¸ªæœåŠ¡å¯åŠ¨çš„å®¹å™¨æ•°é‡ï¼Œæ•°é‡æ˜¯ä»¥è¿™æ ·çš„å‚æ•°å½¢å¼æŒ‡å®šçš„ï¼šservice=numï¼Œæ¯”å¦‚ï¼š
 	docker-compose scale web=2 worker=3
 
 start
-	Æô¶¯ÒÑ¾­´æÔÚµÄÈÝÆ÷×÷ÎªÒ»¸ö·þÎñ
+	å¯åŠ¨å·²ç»å­˜åœ¨çš„å®¹å™¨ä½œä¸ºä¸€ä¸ªæœåŠ¡
 
 stop
-	Í£Ö¹ÔËÐÐµÄÈÝÆ÷¶ø²»É¾³ýËüÃÇ£¬ËüÃÇ¿ÉÒÔÊ¹ÓÃÃüÁîdocker-compose startÖØÐÂÆô¶¯ÆðÀ´
+	åœæ­¢è¿è¡Œçš„å®¹å™¨è€Œä¸åˆ é™¤å®ƒä»¬ï¼Œå®ƒä»¬å¯ä»¥ä½¿ç”¨å‘½ä»¤docker-compose starté‡æ–°å¯åŠ¨èµ·æ¥
 
 up
-	ÎªÒ»¸ö·þÎñ¹¹½¨¡¢´´½¨¡¢Æô¶¯¡¢¸½¼Óµ½ÈÝÆ÷
-	Á¬½ÓµÄ·þÎñ»á±»Æô¶¯£¬³ý·ÇËüÃÇÒÑ¾­ÔÚÔËÐÐÁË
-	Ä¬ÈÏÇé¿öÏÂ£¬docker-compose up»á¼¯ÖÐÃ¿¸öÈÝÆ÷µÄÊä³ö£¬µ±´æÔÚÊ±£¬ËùÓÐµÄÈÝÆ÷»áÍ£Ö¹£¬
-		ÔËÐÐdocker-compose up -d»áÔÚºóÌ¨Æô¶¯ÈÝÆ÷²¢Ê¹ËüÃÇÔËÐÐ
-	Ä¬ÈÏÇé¿öÏÂ£¬Èç¹û·þÎñ´æÔÚÈÝÆ÷µÄ»°£¬docker-compose up»áÍ£Ö¹²¢ÔÙ´´½¨ËüÃÇ£¨Ê¹ÓÃÁËvolumes-from»á±£ÁôÒÑ¹ÒÔØµÄ¾í£©£¬
-	Èç¹û²»ÏëÊ¹ÈÝÆ÷Í£Ö¹²¢ÔÙ´´½¨µÄ»°£¬Ê¹ÓÃdocker-compose up --no-recreate£¬Èç¹ûÓÐÐèÒªµÄ»°£¬Õâ»áÆô¶¯ÈÎºÎÍ£Ö¹µÄÈÝÆ÷
-	Ñ¡Ïî
-		¨Cverbose
-		ÏÔÊ¾¸ü¶àÊä³ö
+	ä¸ºä¸€ä¸ªæœåŠ¡æž„å»ºã€åˆ›å»ºã€å¯åŠ¨ã€é™„åŠ åˆ°å®¹å™¨
+	è¿žæŽ¥çš„æœåŠ¡ä¼šè¢«å¯åŠ¨ï¼Œé™¤éžå®ƒä»¬å·²ç»åœ¨è¿è¡Œäº†
+	é»˜è®¤æƒ…å†µä¸‹ï¼Œdocker-compose upä¼šé›†ä¸­æ¯ä¸ªå®¹å™¨çš„è¾“å‡ºï¼Œå½“å­˜åœ¨æ—¶ï¼Œæ‰€æœ‰çš„å®¹å™¨ä¼šåœæ­¢ï¼Œ
+		è¿è¡Œdocker-compose up -dä¼šåœ¨åŽå°å¯åŠ¨å®¹å™¨å¹¶ä½¿å®ƒä»¬è¿è¡Œ
+	é»˜è®¤æƒ…å†µä¸‹ï¼Œå¦‚æžœæœåŠ¡å­˜åœ¨å®¹å™¨çš„è¯ï¼Œdocker-compose upä¼šåœæ­¢å¹¶å†åˆ›å»ºå®ƒä»¬ï¼ˆä½¿ç”¨äº†volumes-fromä¼šä¿ç•™å·²æŒ‚è½½çš„å·ï¼‰ï¼Œ
+	å¦‚æžœä¸æƒ³ä½¿å®¹å™¨åœæ­¢å¹¶å†åˆ›å»ºçš„è¯ï¼Œä½¿ç”¨docker-compose up --no-recreateï¼Œå¦‚æžœæœ‰éœ€è¦çš„è¯ï¼Œè¿™ä¼šå¯åŠ¨ä»»ä½•åœæ­¢çš„å®¹å™¨
+	é€‰é¡¹
+		â€“verbose
+		æ˜¾ç¤ºæ›´å¤šè¾“å‡º
 
-		¨Cversion
-		ÏÔÊ¾°æ±¾ºÅ²¢ÍË³ö
+		â€“version
+		æ˜¾ç¤ºç‰ˆæœ¬å·å¹¶é€€å‡º
 
-		-f,¨Cfile FILE
-		Ö¸¶¨Ò»¸ö¿ÉÑ¡µÄCompose yamlÎÄ¼þ£¨Ä¬ÈÏ£ºdocker-compose.yml£©
+		-f,â€“file FILE
+		æŒ‡å®šä¸€ä¸ªå¯é€‰çš„Compose yamlæ–‡ä»¶ï¼ˆé»˜è®¤ï¼šdocker-compose.ymlï¼‰
 
-		-p,¨Cproject-name NAME
-		Ö¸¶¨¿ÉÑ¡µÄÏîÄ¿Ãû³Æ£¨Ä¬ÈÏ£ºµ±Ç°Ä¿Â¼Ãû³Æ£©
+		-p,â€“project-name NAME
+		æŒ‡å®šå¯é€‰çš„é¡¹ç›®åç§°ï¼ˆé»˜è®¤ï¼šå½“å‰ç›®å½•åç§°ï¼‰

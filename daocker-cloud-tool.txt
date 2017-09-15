@@ -1,10 +1,10 @@
-¾µÏñ¼ÓËÙÆ÷:
+é•œåƒåŠ é€Ÿå™¨:
 doc:
 http://guide.daocloud.io/dcs/daocloud-9153151.html
 my daotools url:
 http://www.daocloud.io/mirror#accelerator-doc
 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://5ddc2e33.m.daocloud.io
-ÅäÖÃ¾µÏñÂ·¾¶ÔÚ:
+é…ç½®é•œåƒè·¯å¾„åœ¨:
 sudo cat  /etc/docker/daemon.json
 {
     "registry-mirrors": [
